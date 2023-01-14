@@ -5,8 +5,8 @@ import { setCurrentComponent } from '../state/useCurrentComponent';
 <template>
 	<nav>
 		<ul>
-			<li><button @click="setCurrentComponent('createBug')">Create Bug</button></li>
-			<li><button @click="setCurrentComponent('listBugs')">View Bugs</button></li>
+			<li><button @click="setCurrentComponent('CreateBug')">Create Bug</button></li>
+			<li><button @click="setCurrentComponent('ListBugs')">View Bugs</button></li>
 		</ul>
 	</nav>
 </template>

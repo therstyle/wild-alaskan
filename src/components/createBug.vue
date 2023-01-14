@@ -1,5 +1,5 @@
 <script setup>
-import bugForm from './bugForm.vue';
+import BugForm from './BugForm.vue';
 import PageTitle from './PageTitle.vue';
 
 </script>
@@ -8,7 +8,7 @@ import PageTitle from './PageTitle.vue';
 	<section>
 		<PageTitle>Create Bug</PageTitle>
 
-		<bugForm></bugForm>
+		<BugForm></BugForm>
 	</section>
 </template>
 

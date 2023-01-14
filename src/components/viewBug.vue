@@ -1,8 +1,8 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import PageTitle from './PageTitle.vue';
-import bugForm from './bugForm.vue';
-import imageForm from '../components/imageForm.vue';
+import BugForm from './BugForm.vue';
+import ImageForm from './ImageForm.vue';
 import API_URL from '../state/useApiUrl';
 import { currentBugId } from '../state/useCurrentBugId';
 
@@ -25,8 +25,8 @@ onMounted(() => {
 	<section>
 		<PageTitle>Bug ID: {{ bug?.id }} - {{ bug?.title }}</PageTitle>
 
-		<bugForm @load-bug="loadBug"></bugForm>
-		<imageForm></imageForm>
+		<BugForm @load-bug="loadBug"></BugForm>
+		<ImageForm></ImageForm>
 	</section>
 </template>
 

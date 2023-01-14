@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import PageTitle from './PageTitle.vue';
-import listBug from './listBug.vue';
+import ListBug from './ListBug.vue';
 import API_URL from '../state/useApiUrl';
 
 const bugs = ref([]);
@@ -23,12 +23,12 @@ onMounted(() => {
 	<section class="list-bugs">
 		<PageTitle>View Bugs</PageTitle>
 
-		<listBug 
+		<ListBug 
 			v-for="bug in bugs"
 			:key="bug.id"
 			:bug="bug"
 			@load-bugs="loadBugs"
-		></listBug>
+		></ListBug>
 	</section>
 </template>
 

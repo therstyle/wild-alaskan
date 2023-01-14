@@ -1,14 +1,14 @@
 import { ref, defineAsyncComponent } from 'vue';
 
-const createBug = defineAsyncComponent(() => import('../components/createBug.vue'));
-const listBugs = defineAsyncComponent(() => import('../components/listBugs.vue'));
-const viewBug = defineAsyncComponent(() => import('../components/viewBug.vue'));
+const CreateBug = defineAsyncComponent(() => import('../components/CreateBug.vue'));
+const ListBugs = defineAsyncComponent(() => import('../components/ListBugs.vue'));
+const ViewBug = defineAsyncComponent(() => import('../components/ViewBug.vue'));
 
-const currentComponent = ref('createBug');
+const currentComponent = ref('CreateBug');
 const components = {
-	createBug,
-	listBugs,
-	viewBug
+	CreateBug,
+	ListBugs,
+	ViewBug
 }
 
 function setCurrentComponent(name) {

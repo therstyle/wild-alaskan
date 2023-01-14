@@ -48,7 +48,7 @@ const updateBug = async () => {
 }
 
 const loadBug = async () => {
-	if (currentComponent.value !== 'viewBug') {return};
+	if (currentComponent.value !== 'ViewBug') {return};
 	const response = await fetch(`${API_URL}/${currentBugId.value}`);
 	const data = await response.json();
 
@@ -60,7 +60,7 @@ const loadBug = async () => {
 }
 
 function formHandler() {
-	if (currentComponent.value === 'viewBug') {
+	if (currentComponent.value === 'ViewBug') {
 		updateBug();
 	}
 	else {

@@ -12,7 +12,7 @@ const emit = defineEmits(['load-bugs']);
 
 function viewBug(id) {
 	setCurrentBugId(id);
-	setCurrentComponent('viewBug');
+	setCurrentComponent('ViewBug');
 }
 
 const deleteBug = async (bugId) => {

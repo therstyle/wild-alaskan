@@ -33,6 +33,7 @@ const createImage = async () => {
   const data = await response.json();
 	console.log(data);
 	resetFields();
+	loadImages();
 }
 
 const deleteImage = async (imageId) => {

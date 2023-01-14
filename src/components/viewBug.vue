@@ -2,6 +2,8 @@
 import { onMounted, ref } from 'vue';
 import API_URL from '../state/useApiUrl';
 import { currentBugId } from '../state/useCurrentBugId';
+import bugForm from './bugForm.vue';
+import imageForm from '../components/imageForm.vue';
 
 const bug = ref({});
 
@@ -21,6 +23,9 @@ onMounted(() => {
 <template>
 	<section>
 		{{ bug?.title }}
+
+		<bugForm></bugForm>
+		<imageForm></imageForm>
 	</section>
 </template>
 

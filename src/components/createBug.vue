@@ -1,12 +1,13 @@
 <script setup>
-import { ref } from 'vue';
+import bugForm from './bugForm.vue';
 
-const id = ref(0);
 </script>
 
 <template>
 	<section>
 		Create Bug
+
+		<bugForm></bugForm>
 	</section>
 </template>
 

@@ -18,3 +18,17 @@ button {
 		cursor: pointer;
 	}
 }
+
+.bug-form {
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+	background: var(--gray);
+	padding: 16px;
+
+	&__input {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+	}
+}

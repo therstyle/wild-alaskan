@@ -72,7 +72,7 @@ onMounted(() => {
 				v-for="image in images"
 				:key="image?.id"
 			>
-			<h5>{{ image?.fileName }}</h5>
+			<h5>Image ID: {{ image?.id }} - {{ image?.fileName }}</h5>
 			<button @click="deleteImage(image?.id)">Delete Image</button>
 			</li>
 		</ul>
@@ -95,6 +95,10 @@ onMounted(() => {
 		padding: 0;
 
 		> li {
+			h5 {
+				margin-bottom: 0;
+			}
+
 			list-style: none;
 			display: flex;
 			align-items: center;

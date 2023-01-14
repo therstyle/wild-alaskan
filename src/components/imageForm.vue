@@ -1,8 +1,7 @@
 <script setup>
-import { defineProps, ref, onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
 import API_URL from '../state/useApiUrl';
 import { currentBugId } from '../state/useCurrentBugId';
-import { currentComponent } from '../state/useCurrentComponent';
 
 const currentImage = ref({
 	fileName: null,
@@ -36,6 +35,17 @@ const createImage = async () => {
 	resetFields();
 }
 
+const deleteImage = async (imageId) => {
+	const response = await fetch(`${API_URL}/${currentBugId.value}/images/${imageId}`, {
+    method: 'DELETE'
+  });
+
+  const data = await response.json();
+	console.log(data);
+
+	loadImages();
+}
+
 function setImage(data) {
 	currentImage.value.fileName = imageInput.value.files[0].name;
   currentImage.value.contentBase64 = btoa(data);
@@ -50,7 +60,6 @@ onMounted(() => {
 	loadImages();
 });
 
-//TODO: add styling + delete functions
 </script>
 
 <template>
@@ -63,7 +72,7 @@ onMounted(() => {
 				:key="image?.id"
 			>
 			<h5>{{ image?.fileName }}</h5>
-			<button>Delete Image</button>
+			<button @click="deleteImage(image?.id)">Delete Image</button>
 			</li>
 		</ul>
 	</div>
@@ -80,5 +89,16 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .bug-form {
+	&__image-list {
+		margin: 0;
+		padding: 0;
+
+		> li {
+			list-style: none;
+			display: flex;
+			align-items: center;
+			gap: 16px;
+		}
+	}
 }
 </style>

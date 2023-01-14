@@ -26,6 +26,7 @@ onMounted(() => {
 			v-for="bug in bugs"
 			:key="bug.id"
 			:bug="bug"
+			@load-bugs="loadBugs"
 		></listBug>
 	</section>
 </template>

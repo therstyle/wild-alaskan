@@ -1,15 +1,28 @@
 <script setup>
-import { defineProps } from 'vue';
+import { defineProps, defineEmits } from 'vue';
+import API_URL from '../state/useApiUrl';
 import { setCurrentComponent } from '../state/useCurrentComponent';
 import { setCurrentBugId } from '../state/useCurrentBugId';
 
 const props = defineProps({
 	bug: Object
-})
+});
+
+const emit = defineEmits(['load-bugs']);
 
 function viewBug(id) {
 	setCurrentBugId(id);
 	setCurrentComponent('viewBug');
+}
+
+const deleteBug = async (bugId) => {
+	const response = await fetch(`${API_URL}/${bugId}`, {
+    method: 'DELETE'
+  });
+
+  const data = await response.json();
+	emit('load-bugs');
+	console.log(data);
 }
 </script>
 
@@ -23,7 +36,7 @@ function viewBug(id) {
 					<button @click="viewBug(bug?.id)">View Bug</button>
 				</li>
 				<li>
-					<button>Delete Bug</button>
+					<button @click="deleteBug(bug?.id)">Delete Bug</button>
 				</li>
 			</ul>
 		</div>

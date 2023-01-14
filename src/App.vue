@@ -1,11 +1,11 @@
 <script setup>
-import {currentComponent, components} from './state/useCurrentcomponent';
+import {currentComponent, components} from './state/useCurrentComponent';
 import AppNav from './components/AppNav.vue';
 </script>
 
 <template>
 	<AppNav></AppNav>
-	
+
   <component
 		:is="components[currentComponent]"
 	>

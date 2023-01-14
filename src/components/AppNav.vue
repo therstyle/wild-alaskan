@@ -1,5 +1,5 @@
 <script setup>
-import { setCurrentComponent } from '../state/useCurrentcomponent';
+import { setCurrentComponent } from '../state/useCurrentComponent';
 </script>
 
 <template>

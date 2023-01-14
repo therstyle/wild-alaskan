@@ -1,6 +1,6 @@
 <script setup>
 import { defineProps } from 'vue';
-import { setCurrentComponent } from '../state/useCurrentcomponent';
+import { setCurrentComponent } from '../state/useCurrentComponent';
 import { setCurrentBugId } from '../state/useCurrentBugId';
 
 const props = defineProps({

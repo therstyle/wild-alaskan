@@ -7,3 +7,14 @@
 body {
 	margin: 0;
 }
+
+section {
+	margin: auto;
+	max-width: var(--container-max-width);
+}
+
+button {
+	&:hover {
+		cursor: pointer;
+	}
+}

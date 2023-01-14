@@ -29,7 +29,7 @@ const deleteBug = async (bugId) => {
 <template>
 	<article class="list-bug" :id="`bug-${bug?.id}`">
 		<div class="list-bug__content">
-			<h3 v-if="bug?.title" class="list-bug__title">{{ bug.title }}</h3>
+			<h3 v-if="bug?.title" class="list-bug__title">Bug Id: {{ bug?.id }} - {{ bug.title }}</h3>
 
 			<ul class="list-bug__actions">
 				<li>

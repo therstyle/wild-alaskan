@@ -5,6 +5,7 @@ import AppNav from './components/AppNav.vue';
 
 <template>
 	<AppNav></AppNav>
+	
   <component
 		:is="components[currentComponent]"
 	>

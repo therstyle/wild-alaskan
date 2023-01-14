@@ -1,5 +1,5 @@
 <script setup>
-import { defineEmits, ref, onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
 import API_URL from '../state/useApiUrl';
 import { currentBugId } from '../state/useCurrentBugId';
 import { currentComponent } from '../state/useCurrentComponent';

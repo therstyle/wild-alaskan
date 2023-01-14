@@ -1,5 +1,4 @@
 <script setup>
-import { defineProps, defineEmits } from 'vue';
 import API_URL from '../state/useApiUrl';
 import { setCurrentComponent } from '../state/useCurrentComponent';
 import { setCurrentBugId } from '../state/useCurrentBugId';

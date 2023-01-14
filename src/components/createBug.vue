@@ -1,11 +1,12 @@
 <script setup>
 import bugForm from './bugForm.vue';
+import PageTitle from './PageTitle.vue';
 
 </script>
 
 <template>
 	<section>
-		Create Bug
+		<PageTitle>Create Bug</PageTitle>
 
 		<bugForm></bugForm>
 	</section>

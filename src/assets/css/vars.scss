@@ -1,7 +1,24 @@
 :root {
+	//Fonts
+	--main-font: 'Anek Devanagari', sans-serif;
+
 	//Sizes
 	--container-max-width: 1170px;
+	--space: 16px;
+	--space-1: var(--space);
+	--space-2: calc(var(--space) * 2);
+	--space-3: calc(var(--space) * 3);
+	--space-4: calc(var(--space) * 4);
+	--space-half: calc(var(--space) / 2);
 
 	//Colors
-	--gray: #ccc;
+	--gray: rgba(0, 0, 0, 0.1);
+	--dark-blue: #2d62c4;
+	--dark-red: #c43421;
+	--light-blue: #4d7fea;
+	--light-red: #ea442e;
+	--white: #FFF;
+
+	//Misc
+	--transition-delay: 0.3s;
 }

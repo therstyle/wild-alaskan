@@ -28,19 +28,29 @@ onMounted(() => {
 	<section class="list-bugs">
 		<PageTitle>View Bugs</PageTitle>
 
-		<ListBug 
-			v-for="bug in bugs"
-			:key="bug.id"
-			:bug="bug"
-			@load-bugs="loadBugs"
-		></ListBug>
+		<div class="list-bugs__grid">
+			<ListBug 
+				v-for="bug in bugs"
+				:key="bug.id"
+				:bug="bug"
+				@load-bugs="loadBugs"
+			></ListBug>
+		</div>
 	</section>
 </template>
 
 <style lang="scss">
 .list-bugs {
-	display: flex;
-	flex-direction: column;
-	gap: 16px;
+	&__grid {
+		--columns: 2;
+
+		@media only screen and (max-width: 768px) {
+			--columns: 1;
+		}
+
+		display: grid;
+		grid-template-columns: repeat(var(--columns), 1fr);
+		gap: var(--space-1);
+	}
 }
 </style>

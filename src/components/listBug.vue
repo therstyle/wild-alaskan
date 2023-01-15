@@ -39,7 +39,7 @@ const deleteBug = async (bugId) => {
 					<button @click="viewBug(bug?.id)">View Bug</button>
 				</li>
 				<li>
-					<button @click="deleteBug(bug?.id)">Delete Bug</button>
+					<button @click="deleteBug(bug?.id)" class="warning">Delete Bug</button>
 				</li>
 			</ul>
 		</div>

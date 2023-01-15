@@ -85,14 +85,14 @@ onMounted(() => {
 				:key="image?.id"
 			>
 			<h5>Image ID: {{ image?.id }} - {{ image?.fileName }}</h5>
-			<button @click="deleteImage(image?.id)">Delete Image</button>
+			<button @click="deleteImage(image?.id)" class="warning">Delete Image</button>
 			</li>
 		</ul>
 	</div>
 
 	<form class="bug-form" @submit.prevent="createImage">
 		<div class="bug-form__input">
-      <label for="image">Add New Image</label>
+      <h4><label for="image">Add New Image</label></h4>
       <input type="file" name="image" id="image" @change="setImage" ref="imageInput" />
     </div>
 

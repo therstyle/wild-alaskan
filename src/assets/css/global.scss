@@ -10,10 +10,6 @@ body {
 	font-family: var(--main-font);
 }
 
-#app {
-	padding: var(--space-1);
-}
-
 h1,
 h2,
 h3,
@@ -36,6 +32,8 @@ h6 {
 section {
 	margin: auto;
 	max-width: var(--container-max-width);
+	padding-left: var(--space-1);
+	padding-right: var(--space-1);
 
 	input,
 	textarea {

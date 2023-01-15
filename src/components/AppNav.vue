@@ -16,7 +16,7 @@ import { currentComponent, setCurrentComponent } from '../state/useCurrentCompon
 				<li>
 					<button 
 						@click="setCurrentComponent('ListBugs')"
-						:class="{'active': currentComponent === 'ListBugs'}"
+						:class="{'active': currentComponent === 'ListBugs' || currentComponent === 'ViewBug'}"
 					>View Bugs</button>
 				</li>
 			</ul>

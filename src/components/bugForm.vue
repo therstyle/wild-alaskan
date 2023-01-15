@@ -10,53 +10,68 @@ const inputDescription = ref('');
 const emit = defineEmits(['load-bug']);
 
 const createBug = async () => {
-	const response = await fetch(`${API_URL}`, {
-		method: 'POST',
-		body: JSON.stringify({
-			title: title.value,
-			description: description.value
-		}),
-		headers: {
-    'Content-type': 'application/json; charset=UTF-8',
-  	}
-	});
+	try {
+		const response = await fetch(`${API_URL}`, {
+			method: 'POST',
+			body: JSON.stringify({
+				title: title.value,
+				description: description.value
+			}),
+			headers: {
+			'Content-type': 'application/json; charset=UTF-8',
+			}
+		});
 
-	const data = await response.json();
+		const data = await response.json();
 
-	console.log(data);
-	console.log('creating bug');
-	resetFields();
+		console.log(data);
+		console.log('creating bug');
+		resetFields();
+	}
+	catch(e) {
+		console.error(e);
+	}
 }
 
 const updateBug = async () => {
-	const response = await fetch(`${API_URL}/${currentBugId.value}`, {
-		method: 'PUT',
-		body: JSON.stringify({
-			title: title.value,
-			description: description.value
-		}),
-		headers: {
-    'Content-type': 'application/json; charset=UTF-8',
-  	}
-	});
+	try {
+		const response = await fetch(`${API_URL}/${currentBugId.value}`, {
+			method: 'PUT',
+			body: JSON.stringify({
+				title: title.value,
+				description: description.value
+			}),
+			headers: {
+			'Content-type': 'application/json; charset=UTF-8',
+			}
+		});
 
-	const data = await response.json();
-	emit('load-bug');
+		const data = await response.json();
+		emit('load-bug');
 
-	console.log(data);
-	console.log('updating bug');
+		console.log(data);
+		console.log('updating bug');
+	}
+	catch(e) {
+		console.error(e);
+	}
 }
 
 const loadBug = async () => {
-	if (currentComponent.value !== 'ViewBug') {return};
-	const response = await fetch(`${API_URL}/${currentBugId.value}`);
-	const data = await response.json();
+	try {
+		if (currentComponent.value !== 'ViewBug') {return};
+		const response = await fetch(`${API_URL}/${currentBugId.value}`);
+		const data = await response.json();
 
-	if (!data) {return};
+		if (!data) {return};
 
-	console.log(data);
-	inputTitle.value = data?.title;
-	inputDescription.value = data?.description;
+		console.log(data);
+		inputTitle.value = data?.title;
+		inputDescription.value = data?.description;
+	}
+	catch(e) {
+		console.error(e);
+	}
 }
 
 function formHandler() {

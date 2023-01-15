@@ -7,11 +7,16 @@ import API_URL from '../state/useApiUrl';
 const bugs = ref([]);
 
 const loadBugs = async () => {
-	const response = await fetch(API_URL);
-	const data = await response.json();
+	try {
+		const response = await fetch(API_URL);
+		const data = await response.json();
 
-	if (!data) {return};
-	bugs.value = data;
+		if (!data) {return};
+		bugs.value = data;
+	}
+	catch(e) {
+		console.error(e);
+	}
 }
 
 onMounted(() => {

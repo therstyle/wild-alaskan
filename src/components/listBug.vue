@@ -15,13 +15,18 @@ function viewBug(id) {
 }
 
 const deleteBug = async (bugId) => {
-	const response = await fetch(`${API_URL}/${bugId}`, {
-    method: 'DELETE'
-  });
+	try {
+		const response = await fetch(`${API_URL}/${bugId}`, {
+			method: 'DELETE'
+		});
 
-  const data = await response.json();
-	emit('load-bugs');
-	console.log(data);
+		const data = await response.json();
+		emit('load-bugs');
+		console.log(data);
+	}
+	catch(e) {
+		console.error(e);
+	}
 }
 </script>
 

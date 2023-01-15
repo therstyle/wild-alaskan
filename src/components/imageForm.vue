@@ -12,39 +12,54 @@ const imageInput = ref(null);
 const images = ref([]);
 
 const loadImages = async () => {
-	const response = await fetch(`${API_URL}/${currentBugId.value}/images`);
-  const data = await response.json();
-	
-	images.value = data;
+	try {
+		const response = await fetch(`${API_URL}/${currentBugId.value}/images`);
+		const data = await response.json();
+		
+		images.value = data;
+	}
+	catch(e) {
+		console.error(e);
+	}
 }
 
 const createImage = async () => {
-  const response = await fetch(`${API_URL}/${currentBugId.value}/images`, {
-    method: 'POST',
-    body: JSON.stringify({
-      fileName: currentImage.value.fileName,
-			contentBase64: btoa(currentImage.value.contentBase64)
-    }),
-    headers: {
-    'Content-type': 'application/json; charset=UTF-8',
-    }
-  });
+  try {
+		const response = await fetch(`${API_URL}/${currentBugId.value}/images`, {
+			method: 'POST',
+			body: JSON.stringify({
+				fileName: currentImage.value.fileName,
+				contentBase64: btoa(currentImage.value.contentBase64)
+			}),
+			headers: {
+			'Content-type': 'application/json; charset=UTF-8',
+			}
+		});
 
-  const data = await response.json();
-	console.log(data);
-	resetFields();
-	loadImages();
+		const data = await response.json();
+		console.log(data);
+		resetFields();
+		loadImages();
+	}
+	catch(e) {
+		console.error(e);
+	}
 }
 
 const deleteImage = async (imageId) => {
-	const response = await fetch(`${API_URL}/${currentBugId.value}/images/${imageId}`, {
-    method: 'DELETE'
-  });
+	try {
+		const response = await fetch(`${API_URL}/${currentBugId.value}/images/${imageId}`, {
+			method: 'DELETE'
+		});
 
-  const data = await response.json();
-	console.log(data);
+		const data = await response.json();
+		console.log(data);
 
-	loadImages();
+		loadImages();
+	}
+	catch(e) {
+		console.error(e);
+	}
 }
 
 function setImage(data) {

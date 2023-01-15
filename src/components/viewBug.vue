@@ -9,11 +9,16 @@ import { currentBugId } from '../state/useCurrentBugId';
 const bug = ref({});
 
 const loadBug = async () => {
-	const response = await fetch(`${API_URL}/${currentBugId.value}`);
-	const data = await response.json();
+	try {
+		const response = await fetch(`${API_URL}/${currentBugId.value}`);
+		const data = await response.json();
 
-	if (!data) {return};
-	bug.value = data;
+		if (!data) {return};
+		bug.value = data;
+	}
+	catch(e) {
+		console.error(e);
+	}
 }
 
 onMounted(() => {

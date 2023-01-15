@@ -37,7 +37,6 @@ const createImage = async () => {
 		});
 
 		const data = await response.json();
-		console.log(data);
 		resetFields();
 		loadImages();
 	}
@@ -53,8 +52,6 @@ const deleteImage = async (imageId) => {
 		});
 
 		const data = await response.json();
-		console.log(data);
-
 		loadImages();
 	}
 	catch(e) {
@@ -81,8 +78,8 @@ onMounted(() => {
 <template>
 	<h3>Images</h3>
 
-	<div class="bug-form">
-		<ul class="bug-form__image-list" v-if="images.length > 0">
+	<div class="bug-form" v-if="images.length > 0">
+		<ul class="bug-form__image-list">
 			<li 
 				v-for="image in images"
 				:key="image?.id"

@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, computed } from 'vue';
 import API_URL from '../state/useApiUrl';
 import { currentBugId } from '../state/useCurrentBugId';
 
@@ -10,6 +10,7 @@ const currentImage = ref({
 
 const imageInput = ref(null);
 const images = ref([]);
+const error = computed(() => currentImage.value.fileName === null);
 
 const loadImages = async () => {
 	try {
@@ -96,7 +97,7 @@ onMounted(() => {
       <input type="file" name="image" id="image" @change="setImage" ref="imageInput" />
     </div>
 
-		<button>Submit</button>
+		<button :disabled="error">Submit</button>
 	</form>
 </template>
 

@@ -56,6 +56,11 @@ section {
 		border-radius: 8px;
 		padding: 4px 24px;
 
+		&:disabled {
+			opacity: 0.5;
+			pointer-events: none;
+		}
+
 		&:hover {
 			background: var(--light-blue);
 		}

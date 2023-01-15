@@ -22,7 +22,6 @@ const deleteBug = async (bugId) => {
 
 		const data = await response.json();
 		emit('load-bugs');
-		console.log(data);
 	}
 	catch(e) {
 		console.error(e);

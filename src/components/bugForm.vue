@@ -23,9 +23,6 @@ const createBug = async () => {
 		});
 
 		const data = await response.json();
-
-		console.log(data);
-		console.log('creating bug');
 		resetFields();
 	}
 	catch(e) {
@@ -48,9 +45,6 @@ const updateBug = async () => {
 
 		const data = await response.json();
 		emit('load-bug');
-
-		console.log(data);
-		console.log('updating bug');
 	}
 	catch(e) {
 		console.error(e);
@@ -64,8 +58,6 @@ const loadBug = async () => {
 		const data = await response.json();
 
 		if (!data) {return};
-
-		console.log(data);
 		inputTitle.value = data?.title;
 		inputDescription.value = data?.description;
 	}

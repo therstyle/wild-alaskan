@@ -13,7 +13,6 @@ const components = {
 
 function setCurrentComponent(name) {
 	currentComponent.value = name;
-	console.log('setting new component');
 }
 
 export {

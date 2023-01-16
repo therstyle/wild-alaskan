@@ -25,12 +25,13 @@ const loadImages = async () => {
 }
 
 const createImage = async () => {
+	if (currentImage.value.fileName === null || currentImage.value.contentBase64 === null) {return};
   try {
 		const response = await fetch(`${API_URL}/${currentBugId.value}/images`, {
 			method: 'POST',
 			body: JSON.stringify({
 				fileName: currentImage.value.fileName,
-				contentBase64: btoa(currentImage.value.contentBase64)
+				contentBase64: currentImage.value.contentBase64
 			}),
 			headers: {
 			'Content-type': 'application/json; charset=UTF-8',
@@ -60,9 +61,15 @@ const deleteImage = async (imageId) => {
 	}
 }
 
-function setImage(data) {
+function setImage() {
+	const file = imageInput.value.files[0];
+	const reader = new FileReader();
+	reader.readAsDataURL(file);
+	reader.addEventListener('load', () => {
+		currentImage.value.contentBase64 = reader.result;
+  }, false);
+
 	currentImage.value.fileName = imageInput.value.files[0].name;
-  currentImage.value.contentBase64 = btoa(data);
 }
 
 function resetFields() {
@@ -79,14 +86,16 @@ onMounted(() => {
 <template>
 	<h3>Images</h3>
 
-	<div class="bug-form" v-if="images.length > 0">
+	<div class="bug-form" v-if="images.length">
 		<ul class="bug-form__image-list">
 			<li 
 				v-for="image in images"
 				:key="image?.id"
 			>
-			<h5>Image ID: {{ image?.id }} - {{ image?.fileName }}</h5>
-			<button @click="deleteImage(image?.id)" class="warning">Delete Image</button>
+				<img :src="image?.contentBase64" alt="uploaded image" />
+
+				<h5>Image ID: {{ image?.id }} - {{ image?.fileName }}</h5>
+				<button @click="deleteImage(image?.id)" class="warning">Delete Image</button>
 			</li>
 		</ul>
 	</div>
@@ -111,14 +120,18 @@ onMounted(() => {
 		gap: 16px;
 
 		> li {
-			h5 {
-				margin-bottom: 0;
-			}
-
 			list-style: none;
 			display: flex;
 			align-items: center;
 			gap: 16px;
+
+			img {
+				max-width: 64px;
+			}
+
+			h5 {
+				margin-bottom: 0;
+			}
 		}
 	}
 }

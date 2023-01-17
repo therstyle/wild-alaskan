@@ -9,6 +9,11 @@ const state = ref({
 	description: ''
 });
 
+const status = ref({
+	submitted: false,
+	output: '',
+});
+
 const errors = computed(() => {
 	return {
 		title: state.value.title.length,
@@ -19,6 +24,8 @@ const errors = computed(() => {
 const emit = defineEmits(['load-bug']);
 
 const createBug = async () => {
+	status.value.submitted = false;
+
 	try {
 		const response = await fetch(`${API_URL}`, {
 			method: 'POST',
@@ -31,15 +38,26 @@ const createBug = async () => {
 			}
 		});
 
-		const data = await response.json();
+		if (!response?.ok) {
+			status.value.output = `An error has occurred: ${response?.statusText}`;
+		}
+		else {
+			status.value.output = 'Successfully submitted!';
+		}
+
 		resetFields();
 	}
 	catch(e) {
 		console.error(e);
+		status.value.output = `An error has occurred: ${e}`;
 	}
+
+	status.value.submitted = true;
 }
 
 const updateBug = async () => {
+	status.value.submitted = false;
+
 	try {
 		const response = await fetch(`${API_URL}/${currentBugId.value}`, {
 			method: 'PUT',
@@ -52,12 +70,21 @@ const updateBug = async () => {
 			}
 		});
 
-		const data = await response.json();
+		if (!response?.ok) {
+			status.value.output = `An error has occurred: ${response?.statusText}`;
+		}
+		else {
+			status.value.output = 'Successfully updated!';
+		}
+
 		emit('load-bug');
 	}
 	catch(e) {
 		console.error(e);
+		status.value.output = `An error has occurred: ${e}`;
 	}
+
+	status.value.submitted = true;
 }
 
 const loadBug = async () => {
@@ -107,5 +134,9 @@ onMounted(() => {
 		</div>
 
 		<button :disabled="errors.title === 0 || errors.description === 0">Submit</button>
+
+		<h5 v-if="status.submitted">
+			{{ status.output }}
+		</h5>
 	</form>
 </template>

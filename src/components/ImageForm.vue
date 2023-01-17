@@ -8,6 +8,11 @@ const currentImage = ref({
 	contentBase64: null
 });
 
+const status = ref({
+	submitted: false,
+	output: ''
+});
+
 const imageInput = ref(null);
 const images = ref([]);
 const error = computed(() => currentImage.value.fileName === null);
@@ -26,6 +31,8 @@ const loadImages = async () => {
 
 const createImage = async () => {
 	if (currentImage.value.fileName === null || currentImage.value.contentBase64 === null) {return};
+	status.value.submitted = false;
+	
   try {
 		const response = await fetch(`${API_URL}/${currentBugId.value}/images`, {
 			method: 'POST',
@@ -38,13 +45,22 @@ const createImage = async () => {
 			}
 		});
 
-		const data = await response.json();
+		if (!response?.ok) {
+			status.value.output = `An error has occurred: ${response?.statusText}`;
+		}
+		else {
+			status.value.output = 'Successfully submitted!';
+		}
+
 		resetFields();
 		loadImages();
 	}
 	catch(e) {
 		console.error(e);
+		status.value.output = `An error has occurred: ${e}`;
 	}
+	
+	status.value.submitted = true;
 }
 
 const deleteImage = async (imageId) => {
@@ -107,6 +123,10 @@ onMounted(() => {
     </div>
 
 		<button :disabled="error">Submit</button>
+
+		<h5 v-if="status.submitted">
+			{{ status.output }}
+		</h5>
 	</form>
 </template>
 

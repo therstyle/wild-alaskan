@@ -88,8 +88,8 @@ const updateBug = async () => {
 }
 
 const loadBug = async () => {
+	if (currentComponent.value !== 'ViewBug') {return};
 	try {
-		if (currentComponent.value !== 'ViewBug') {return};
 		const response = await fetch(`${API_URL}/${currentBugId.value}`);
 		const data = await response.json();
 

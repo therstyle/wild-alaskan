@@ -8,7 +8,7 @@ const bugs = ref([]);
 
 const loadBugs = async () => {
 	try {
-		const response = await fetch(API_URL);
+		const response = await fetch(`${API_URL}?sortBy=createdAt&order=desc`);
 		const data = await response.json();
 
 		if (!data) {return};

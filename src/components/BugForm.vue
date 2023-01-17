@@ -109,8 +109,3 @@ onMounted(() => {
 		<button :disabled="errors.title === 0 || errors.description === 0">Submit</button>
 	</form>
 </template>
-
-<style lang="scss" scoped>
-.bug-form {
-}
-</style>

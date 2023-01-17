@@ -11,6 +11,3 @@ import PageTitle from './PageTitle.vue';
 		<BugForm></BugForm>
 	</section>
 </template>
-
-<style lang="scss">
-</style>

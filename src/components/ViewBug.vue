@@ -34,6 +34,3 @@ onMounted(() => {
 		<ImageForm></ImageForm>
 	</section>
 </template>
-
-<style lang="scss">
-</style>

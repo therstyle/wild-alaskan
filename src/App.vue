@@ -1,6 +1,12 @@
 <script setup>
-import {currentComponent, components} from './state/useCurrentComponent';
+import {onMounted} from 'vue';
+import {currentComponent, components, setCurrentComponent} from './state/useCurrentComponent';
 import AppNav from './components/AppNav.vue';
+
+onMounted(() => {
+	//The home page component
+	setCurrentComponent('CreateBug');
+});
 </script>
 
 <template>

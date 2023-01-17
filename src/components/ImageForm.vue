@@ -92,7 +92,7 @@ onMounted(() => {
 				v-for="image in images"
 				:key="image?.id"
 			>
-				<img :src="image?.contentBase64" alt="uploaded image" />
+				<img v-if="image?.contentBase64" :src="image.contentBase64" :alt="image?.fileName" />
 
 				<h5>Image ID: {{ image?.id }} - {{ image?.fileName }}</h5>
 				<button @click="deleteImage(image?.id)" class="warning">Delete Image</button>

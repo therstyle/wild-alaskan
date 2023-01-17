@@ -1,6 +1,6 @@
 <script setup>
-import {onMounted} from 'vue';
-import {currentComponent, components, setCurrentComponent} from './state/useCurrentComponent';
+import { onMounted } from 'vue';
+import { currentComponent, components, setCurrentComponent } from './state/useCurrentComponent';
 import AppNav from './components/AppNav.vue';
 
 onMounted(() => {
